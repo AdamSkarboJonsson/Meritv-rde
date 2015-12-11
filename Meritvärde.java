@@ -18,7 +18,7 @@ public class Meritvärdev3
         System.out.println("Kurspoäng: 100");
         System.out.println("Betyg: C");
         System.out.println("------------------------------");
-        System.out.println("Lycka till!");
+        System.out.println("Om du vill redigera tidigare kurser så kan du skriva \"tillbaka\" i kursnamnsfältet. Lycka till!");
         System.out.println();
         System.out.println("START");
         System.out.println("------------------------------");
@@ -44,14 +44,34 @@ public class Meritvärdev3
             }
             
             System.out.println("#" + x + " Kursnamn: ");
-            kursnamn[x] = input.nextLine();
-
-            System.out.println("Kurspoäng: ");
-            kurspoäng[x] = input.nextLine();
-
-            System.out.println("Betyg: ");
-            betyg[x] = input.nextLine();
-            System.out.println("------------------------------");
+            svar = input.nextLine();
+            
+            if (svar.equals("tillbaka"))
+            {
+                x -= 2;
+                System.out.println("------------------------------");
+            }else
+            {
+            
+                kursnamn[x] = svar;
+                
+                kurspoäng[x] = kurs(svar);
+                
+                if (kurspoäng[x].equals("1"))
+                {
+                    System.out.println("Kurspoäng: ");
+                    kurspoäng[x] = input.nextLine();
+                    System.out.println("Betyg: ");
+                    betyg[x] = input.nextLine();
+                    System.out.println("------------------------------");
+                }else
+                {
+                    System.out.println("Kurspoäng: " + kurspoäng[x]);
+                    System.out.println("Betyg: ");
+                    betyg[x] = input.nextLine();
+                    System.out.println("------------------------------");
+                }
+            }
         }
         
         System.out.println("Skriv \"visa\" om du vill se alla kurser som du har lagt in. Tryck enter för att fortsätta.");
@@ -115,6 +135,51 @@ public class Meritvärdev3
         System.out.println();
         System.out.println("   | " + poäng + " |");
         System.out.println("   _______");
+    }
+    
+    public static String kurs(String strTarget)
+    {
+        String strTargetFirst = strTarget;
+        int y;
+        
+        for (y = 1; y<8; y++)
+        {
+            if (strTarget.equals("Svenska " + y))
+            {
+                strTarget = "100";
+                break;
+            }else if(strTarget.equals("Engelska " + (y+4)))
+            {
+                strTarget = "100";
+                break;
+            }else if(strTarget.equals("Matematik " + y))
+            {
+                strTarget = "100";
+                break;
+            }else if(strTarget.equals("Biologi " + y))
+            {
+                strTarget = "100";
+                break;
+            }else if(strTarget.equals("Fysik " + (y+1)))
+            {
+                strTarget = "100";
+                break;
+            }else if(strTarget.equals("Fysik 1"))
+            {
+                strTarget = "150";
+                break;
+            }else if(strTarget.equals("Kemi " + y))
+            {
+                strTarget = "100";
+                break;
+            }
+            
+        }
+        if (strTargetFirst.equals(strTarget))
+        {
+            strTarget = "1";
+        }
+        return strTarget;
     }
              
 }
