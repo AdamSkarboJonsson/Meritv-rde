@@ -6,12 +6,16 @@ import java.util.Scanner;
  */
 public class Meritvärdev3 
 {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) 
     {
         Scanner input = new Scanner(System.in);
         
         System.out.println("Välkommen till Adams meritvärdesuträknare!");
-        System.out.println("I detta program skriver du in vilka kurser du har läst, hur mycket kurspoäng var och en bestod av och vilket betyg du fick i varje kurs.");
+        System.out.println("Skriv in vilka kurser du har läst, hur mycket kurspoäng var och en bestod av och vilket betyg du fick i varje kurs.");
         System.out.println("Ett exempel på hur du skriver in en av dina kurser:");
         System.out.println("------------------------------");
         System.out.println("#1 Kursnamn: Engelska 6");
@@ -124,17 +128,17 @@ public class Meritvärdev3
             
             kurspoängDoub[i] = Double.parseDouble(kurspoäng[i]);
             betygDoub[i] = Double.parseDouble(betyg[i]);
-            
+        } 
             poäng += kurspoängDoub[i]*betygDoub[i];
             totKurspoäng += kurspoängDoub[i];
-        }
+           
+            poäng = Math.round((poäng/totKurspoäng) + meritpoäng);
+            System.out.println("Din poäng blev: ");
+            System.out.println("    ________ ");
+            System.out.println("   |        |");
+            System.out.println("   | " + poäng + " |");
+            System.out.println("   |________|");
         
-        poäng = (poäng/totKurspoäng) + meritpoäng;
-        System.out.println("Din poäng blev: ");
-        System.out.println("   _______");
-        System.out.println();
-        System.out.println("   | " + poäng + " |");
-        System.out.println("   _______");
     }
     
     public static String kurs(String strTarget)
