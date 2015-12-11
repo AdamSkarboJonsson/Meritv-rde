@@ -14,6 +14,7 @@ public class Meritvärdev3
     {
         Scanner input = new Scanner(System.in);
         
+        //Informerar användaren om vad programmet gör och uppmanar hen att börja.
         System.out.println("Välkommen till Adams meritvärdesuträknare!");
         System.out.println("Skriv in vilka kurser du har läst, hur mycket kurspoäng var och en bestod av och vilket betyg du fick i varje kurs.");
         System.out.println("Ett exempel på hur du skriver in en av dina kurser:");
@@ -26,7 +27,9 @@ public class Meritvärdev3
         System.out.println();
         System.out.println("START");
         System.out.println("------------------------------");
+        //////
         
+        //Nödvändig deklaration av fält och variabler.
         String[] kursnamn = new String[50];
         String[] kurspoäng = new String[50];
         String[] betyg = new String[50];
@@ -34,6 +37,7 @@ public class Meritvärdev3
         int x;
         int i;
         
+        //Satsen som samlar in alla kurser, kurspoäng och betyg.
         for (x = 1; x<49; x++)
         {
             if (x >= 25)
@@ -56,9 +60,7 @@ public class Meritvärdev3
                 System.out.println("------------------------------");
             }else
             {
-            
                 kursnamn[x] = svar;
-                
                 kurspoäng[x] = kurs(svar);
                 
                 if (kurspoäng[x].equals("1"))
@@ -77,7 +79,9 @@ public class Meritvärdev3
                 }
             }
         }
+        ///////
         
+        //En funktion som låter användaren att visa alla kurser som hen lade in.
         System.out.println("Skriv \"visa\" om du vill se alla kurser som du har lagt in. Tryck enter för att fortsätta.");
         svar = input.nextLine();
 
@@ -94,10 +98,14 @@ public class Meritvärdev3
             }
             System.out.println("Psst! Du kan scrolla upp och ner i kurslistan!");
         }
-
+        ///////
+        
+        //Meritpoäng
         System.out.println("Ange meritpoäng (x,x):");
         double meritpoäng = input.nextDouble();
-
+        ///////
+        
+        //Omvandling från String till double samt uträkningen
         double[] kurspoängDoub = new double[x];
         double[] betygDoub = new double[x];
         double poäng = 0;
@@ -131,16 +139,19 @@ public class Meritvärdev3
         } 
             poäng += kurspoängDoub[i]*betygDoub[i];
             totKurspoäng += kurspoängDoub[i];
-           
-            poäng = Math.round((poäng/totKurspoäng) + meritpoäng);
-            System.out.println("Din poäng blev: ");
-            System.out.println("    ________ ");
-            System.out.println("   |        |");
-            System.out.println("   | " + poäng + " |");
-            System.out.println("   |________|");
+        ////////    
+        
+        //Presentation av resultatet
+        poäng = Math.round((poäng/totKurspoäng) + meritpoäng);
+        System.out.println("Din poäng blev: ");
+        System.out.println("    ________ ");
+        System.out.println("   |        |");
+        System.out.println("   | " + poäng + " |");
+        System.out.println("   |________|");
         
     }
     
+    //En funktion som underlättar inskrivningen av kurser. Kurser som Svenska 1,2,3 och Engelska 5,6,7 känner programmet igen och det fyller i kurspoängsfältet åt användaren.
     public static String kurs(String strTarget)
     {
         String strTargetFirst = strTarget;
