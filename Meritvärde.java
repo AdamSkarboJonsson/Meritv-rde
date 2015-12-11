@@ -10,7 +10,7 @@ public class Meritvärdev3
     {
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Välkommen till Adams meritpoängsuträknare!");
+        System.out.println("Välkommen till Adams meritvärdesuträknare!");
         System.out.println("I detta program skriver du in vilka kurser du har läst, hur mycket kurspoäng var och en bestod av och vilket betyg du fick i varje kurs.");
         System.out.println("Ett exempel på hur du skriver in en av dina kurser:");
         System.out.println("------------------------------");
